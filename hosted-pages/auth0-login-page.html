@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+  Auth0 Dashboard > Branding > Universal Login > Advanced Options > Login tab
+  1. Enable "Customize Login Page".
+  2. Replace the editor contents with this file, then edit the three values marked EDIT.
+  3. Save. At runtime Auth0 substitutes the base64 login transaction into the atob('...') call below: keep that placeholder exactly as-is.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sign in to the lab</title>
+</head>
+<body>
+  <div id="lab-login" aria-live="polite">Loading sign-in...</div>
+
+  <script src="https://cdn.auth0.com/js/auth0/10.0.0/auth0.min.js"
+    integrity="sha384-1lKi6WIKda1Y11qqpaCsR1f/GGSdz74ItN95cPnLjSL78VumtFVuIqT9v5KwZ+Ca"
+    crossorigin="anonymous"></script>
+
+  <!-- EDIT 1: public URL of the file uploaded to your Google Cloud Storage bucket (see hosted-pages/dist/manifest.json). -->
+  <script src="https://storage.googleapis.com/YOUR_BUCKET/auth0/hosted-login.HASH.js"></script>
+
+  <script>
+    (function () {
+      var root = document.getElementById('lab-login');
+      try {
+        var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
+        window.LabHostedLogin.mount(root, {
+          auth0Config: config,
+          // EDIT 2: the lab app's resolve endpoint (must be reachable from the user's browser).
+          resolveUrl: 'http://localhost:5173/api/auth/resolve-connection',
+          // EDIT 2b (optional): the lab app's forgot-password endpoint; remove the line to hide "Forgot your password?".
+          forgotPasswordUrl: 'http://localhost:5173/api/auth/forgot-password',
+          connections: ['devdb', 'ecomdb'],
+          // EDIT 3 (optional): signup page of the lab app; remove the line to hide the link.
+          signupUrl: 'http://localhost:5173/signup'
+        });
+      } catch (error) {
+        root.textContent = 'Sign-in is unavailable: the login page failed to load. Contact the administrator.';
+        if (window.console) console.error('[lab-hosted-login] Failed to start', error && error.message);
+      }
+    })();
+  </script>
+</body>
+</html>

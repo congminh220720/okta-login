@@ -1,0 +1,62 @@
+// Mirrors the lab's Next.js login styles, scoped so it can run inside the Auth0-hosted page.
+export const styles = `
+html, body { margin: 0; background: #f4f6f1; }
+.lab-hosted {
+  --ink: #182c29;
+  --muted: #546862;
+  --accent: #17634f;
+  color-scheme: light;
+  min-height: 100vh;
+  color: var(--ink);
+  background: #f4f6f1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.lab-hosted *, .lab-hosted *::before, .lab-hosted *::after { box-sizing: border-box; }
+.lab-hosted button, .lab-hosted input { font: inherit; min-height: 48px; border-radius: 9px; }
+.lab-hosted button { border: 0; padding: 13px 24px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+.lab-hosted button:hover:not(:disabled) { background: #114c3d; }
+.lab-hosted button:disabled { opacity: .65; cursor: wait; }
+.lab-hosted a { color: var(--accent); text-underline-offset: 3px; }
+.lab-hosted :focus-visible { outline: 3px solid #926219; outline-offset: 4px; }
+.lab-hosted .shell { max-width: 1180px; padding: 48px 32px 24px; margin: auto; }
+.lab-hosted .brand { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: 2px; }
+.lab-hosted .brand-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: #fff; font-size: 22px; }
+.lab-hosted .login-grid { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 80px; min-height: 76vh; padding: 64px 0; }
+.lab-hosted .eyebrow { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--accent); margin: 0 0 20px; }
+.lab-hosted h1 { font-size: clamp(32px, 4.2vw, 52px); line-height: 1.13; letter-spacing: -2px; margin: 0 0 24px; overflow-wrap: anywhere; }
+.lab-hosted h1 span { color: var(--accent); }
+.lab-hosted h2 { margin: 0 0 12px; font-size: 27px; letter-spacing: -.7px; }
+.lab-hosted .lead { color: var(--muted); font-size: 17px; line-height: 1.75; max-width: 480px; }
+.lab-hosted .muted, .lab-hosted .footnote, .lab-hosted .hint { color: var(--muted); line-height: 1.6; }
+.lab-hosted .muted { font-size: 14px; }
+.lab-hosted .connections { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 36px; }
+.lab-hosted .connections span { padding: 9px 14px; border: 1px solid #cbd7cd; border-radius: 30px; font: 13px monospace; background: #fafcf8; }
+.lab-hosted .connections i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 8px; background: var(--accent); }
+.lab-hosted .flow { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.lab-hosted .flow li { position: relative; padding: 0 0 24px 43px; counter-increment: step; }
+.lab-hosted .flow li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 2px; font: 12px monospace; color: var(--accent); }
+.lab-hosted .flow strong { display: block; font-size: 14px; margin-bottom: 7px; }
+.lab-hosted .flow span { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.lab-hosted .card { background: #fff; border: 1px solid #dce4dc; padding: 36px; border-radius: 20px; box-shadow: 0 20px 70px #163f3010; min-width: 0; }
+.lab-hosted .auth-form { display: flex; flex-direction: column; margin-top: 28px; gap: 10px; }
+.lab-hosted .auth-form label { font-size: 13px; font-weight: 700; }
+.lab-hosted .auth-form input { background: #fcfdfb; border: 1px solid #9baea3; padding: 12px; width: 100%; color: var(--ink); }
+.lab-hosted .auth-form input:disabled { background: #edf0eb; }
+.lab-hosted .hint { font-size: 12px; margin: 0 0 14px; }
+.lab-hosted .footnote { font-size: 12px; margin: 26px 0 0; }
+.lab-hosted .error { padding: 14px; border-radius: 8px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; background: #fff0ee; color: #9a271b; margin: 4px 0; }
+.lab-hosted .captcha:empty { display: none; }
+.lab-hosted .success { color: var(--accent); }
+.lab-hosted [hidden] { display: none !important; }
+.lab-hosted .forgot-row { margin: -2px 0 4px; text-align: right; }
+.lab-hosted .link-button { min-height: 0; padding: 0; background: none; color: var(--accent); font-weight: 700; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.lab-hosted .link-button:hover:not(:disabled) { background: none; color: #114c3d; }
+.lab-hosted h2:focus { outline: none; }
+.lab-hosted footer { border-top: 1px solid #d4ded4; padding: 24px 0; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 11px; }
+@media (max-width: 800px) {
+  .lab-hosted .shell { padding: 28px 20px; }
+  .lab-hosted .login-grid { grid-template-columns: 1fr; gap: 24px; padding: 48px 0; }
+  .lab-hosted .card { padding: 28px 22px; }
+  .lab-hosted footer { flex-direction: column; }
+}
+`;

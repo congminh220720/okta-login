@@ -1,0 +1,18 @@
+{
+  "servers": {
+    "auth0": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@auth0/auth0-mcp-server",
+        "run",
+        "--tools",
+        "auth0_list_*,auth0_get_*",
+        "--read-only"
+      ],
+      "env": {
+        "DEBUG": "auth0-mcp"
+      }
+    }
+  }
+}
